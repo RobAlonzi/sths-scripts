@@ -1,0 +1,74 @@
+<h1>{{ title }}</h1>
+
+<h2>Skaters</h2>
+<table class="table table-sm">
+  <tbody>
+    {{#each skaters}}
+      <tr>
+        <td>{{ this.team }}</td>
+        <td>{{ this.name.first }} {{ this.name.last }}</td>
+        <td>{{#if this.position.is_center}}X{{/if}}</td>
+        <td>{{#if this.position.is_left_wing}}X{{/if}}</td>
+        <td>{{#if this.position.is_right_wing}}X{{/if}}</td>
+        <td>{{#if this.position.is_defense}}X{{/if}}</td>
+        <td>{{ this.ratings.checking }}</td>
+        <td>{{ this.ratings.fighting }}</td>
+        <td>{{ this.ratings.dicipline }}</td>
+        <td>{{ this.ratings.skating }}</td>
+        <td>{{ this.ratings.strength }}</td>
+        <td>{{ this.ratings.endurance }}</td>
+        <td>{{ this.ratings.durability }}</td>
+        <td>{{ this.ratings.puck_handling }}</td>
+        <td>{{ this.ratings.faceoffs }}</td>
+        <td>{{ this.ratings.passing }}</td>
+        <td>{{ this.ratings.scoring }}</td>
+        <td>{{ this.ratings.defense }}</td>
+        <td>{{ this.ratings.penalty_shot }}</td>
+        <td>{{ this.ratings.experience }}</td>
+        <td>{{ this.ratings.leadership }}</td>
+        <td>{{ this.ratings.overall }}</td>
+        <td>{{ this.birthday.year }}</td>
+        <td>{{ this.contract.length }}</td>
+        <td>{{ formatSalary this.contract.salary }}</td>
+        <td>{{#if this.contract.is_ntc}}X{{/if}}</td>
+        <td>{{#if this.status.is_pro}}Yes{{else}}No{{/if}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
+<h2>Goalies</h2>
+
+<table class="table table-sm">
+  <tbody>
+    {{#each goalies}}
+      <tr>
+        <td>{{ this.team }}</td>
+        <td>{{ this.name.first }} {{ this.name.last }}</td>
+        <td>G</td>
+        <td>{{ this.ratings.skating }}</td>
+        <td>{{ this.ratings.durability }}</td>
+        <td>{{ this.ratings.endurance }}</td>
+        <td>{{ this.ratings.size }}</td>
+        <td>{{ this.ratings.agility }}</td>
+        <td>{{ this.ratings.rebound_control }}</td>
+        <td>{{ this.ratings.style_control }}</td>
+        <td>{{ this.ratings.hand_speed }}</td>
+        <td>{{ this.ratings.reaction_time }}</td>
+        <td>{{ this.ratings.puck_handling }}</td>
+        <td>{{ this.ratings.penalty_shot }}</td>
+        <td>{{ this.ratings.experience }}</td>
+        <td>{{ this.ratings.leadership }}</td>
+        <td>{{ this.ratings.overall }}</td>
+        <td>{{ this.birthday.year }}</td>
+        <td>{{ this.contract.length }}</td>
+        <td>{{ formatSalary this.contract.salary }}</td>
+        <td>{{#if this.contract.is_ntc}}X{{/if}}</td>
+        <td>{{#if this.status.is_pro}}Yes{{else}}No{{/if}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+

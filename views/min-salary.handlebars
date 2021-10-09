@@ -1,0 +1,24 @@
+<h1>{{ title }}</h1>
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <td>Team</td>
+      <td>POS</td>
+      <td>Name</td>
+      <td>Salary</td>
+      <td>New Salary</td>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each players}}
+      <tr>
+        <td>{{ this.team }}</td>
+        <td>{{ this.position.formatted }}</td>
+        <td>{{ this.name.last }}, {{ this.name.first }}</td>
+        <td>{{ formatSalary this.contract.salary }}</td>
+        <td>{{ formatSalary threshold }}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
