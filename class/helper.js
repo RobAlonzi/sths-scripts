@@ -1,4 +1,12 @@
-const { TEAM_NICKNAMES } = require('../config');
+const { TEAM_NICKNAMES, BIRTHDATE_SEPARATOR, BIRTHDATE_FORMAT } = require('../config');
+
+function createIdFromName(name) {
+  if(!name) {
+    return '';
+  }
+
+  return name.trim().toLowerCase().replaceAll(' ', '-');
+}
 
 function cleanName(name) {
   const full_name = name.split('(')[0];
@@ -25,7 +33,15 @@ function formatSalary(salary) {
 }
 
 function formatBirthday(birthday) {
-  const [year, month, day] = birthday.split('-');
+  if(BIRTHDATE_FORMAT === 'M/D/Y') {
+    const [month, day, year] = birthday.split(BIRTHDATE_SEPARATOR);
+
+    return {
+      year: Number(year), month: Number(month), day: Number(day)
+    }
+  }
+
+  const [year, month, day] = birthday.split(BIRTHDATE_SEPARATOR);
 
   return {
     year: Number(year), month: Number(month), day: Number(day)
@@ -69,6 +85,7 @@ function formatPosition({ is_center, is_left_wing, is_right_wing, is_defense, is
 
 module.exports = {
   cleanName,
+  createIdFromName,
   findTeam,
   formatBirthday,
   formatWeight,

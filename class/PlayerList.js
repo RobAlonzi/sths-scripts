@@ -24,8 +24,6 @@ class PlayerList {
   _mergeSkaterData(skater_ratings, skater_info) {
     const merged_data = [];
 
-    debugger;
-
     for(const skater of skater_ratings) {
       const info = skater_info.find(info => skater.name.last === info.name.last && skater.name.first === info.name.first && skater.team === info.team);
 
@@ -37,7 +35,7 @@ class PlayerList {
 
       const combined_skater = {
         id: skater.id,
-        age: skater.age,
+        age: info.age,
         birthday: info.birthday,
         contract: {
           ...info.contract,
@@ -74,7 +72,7 @@ class PlayerList {
 
       const combined_goalie = {
         id: goalie.id,
-        age: goalie.age,
+        age: info.age,
         birthday: info.birthday,
         contract: {
           ...info.contract,

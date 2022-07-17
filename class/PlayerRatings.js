@@ -2,7 +2,7 @@ const axios = require('axios');
 const { JSDOM } = require('jsdom');
 const jquery = require('jquery');
 
-const { cleanName, findTeam, formatSalary, formatPosition } = require('./helper');
+const { cleanName, createIdFromName, findTeam, formatSalary, formatPosition } = require('./helper');
 
 class PlayerRatings {
 	constructor(url, type) {
@@ -69,8 +69,18 @@ class PlayerRatings {
     };
 
 		const cells = $(row).find('td');
-    skater.id = Number($(cells).eq(1).find('a').attr('href').split('=')[1]);
-    skater.name = cleanName($(cells).eq(1).find('a').text());
+
+    
+    // If this output has player links
+    if($(cells).eq(1).find('a').attr('href')) {
+      skater.id = Number($(cells).eq(1).find('a').attr('href').split('=')[1]);
+      skater.name = cleanName($(cells).eq(1).find('a').text());
+    } else {
+      const name = cleanName($(cells).eq(1).text())
+      skater.id = createIdFromName(`${name.first} ${name.last}`);
+      skater.name = name; 
+    }
+
     skater.team = findTeam(team);
     skater.age = Number($(cells).eq(28).text());
 
@@ -137,10 +147,20 @@ class PlayerRatings {
 		const cells = $(row).find('td');
     
     // Main
-    goalie.id = Number($(cells).eq(0).find('a').attr('href').split('=')[1]);
-    goalie.name = cleanName($(cells).eq(0).find('a').text());
+    // If this output has player links
+    if($(cells).eq(0).find('a').attr('href')) {
+      goalie.id = Number($(cells).eq(0).find('a').attr('href').split('=')[1]);
+      goalie.name = cleanName($(cells).eq(0).find('a').text());
+    } else {
+      const name = cleanName($(cells).eq(0).text())
+      goalie.id = createIdFromName(`${name.first} ${name.last}`);
+      goalie.name = name; 
+    }
+ 
     goalie.team = findTeam(team);
     goalie.age = Number($(cells).eq(22).text());
+
+
 
     // Position
     goalie.position.is_center = false;

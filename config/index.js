@@ -1,11 +1,18 @@
-const CURRENT_LEAGUE = 'OTHL';
-const ROSTER_URL = 'https://othl.ca/File/2021-PreSeason/OTHL-ProTeamRoster.php';
-const PLAYER_INFO_URL = 'https://othl.ca/File/2021-PreSeason/OTHL-ProTeamPlayersInfo.php';
-const SKATER_WAIVER_AGE = 1996;
-const GOALIE_WAIVER_AGE = 1995;
-const FREE_AGENT_AGE = 1992;
+// const CURRENT_LEAGUE = 'OTHL';
+// const ROSTER_URL = 'https://othl.ca/File/2021-RegularSeason/OTHL-ProTeamRoster.php';
+// const PLAYER_INFO_URL = 'https://othl.ca/File/2021-RegularSeason/OTHL-ProTeamPlayersInfo.php';
+const CURRENT_LEAGUE = 'BRHL';
+const ROSTER_URL = 'https://brhl.net/File/2022-Preseason/BRHL2-ProTeamRoster.html';
+const PLAYER_INFO_URL = 'https://brhl.net/File/2022-Preseason/BRHL2-ProTeamPlayersInfo.html';
+const SKATER_WAIVER_AGE = 1997;
+const GOALIE_WAIVER_AGE = 1996;
+const FREE_AGENT_AGE = 1993;
 const MIN_SALARY_THRESHOLD = 750000;
 const ONE_WAY_SALARY_THRESHOLD = 4000000;
+// const BIRTHDATE_FORMAT = 'Y/M/D';
+// const BIRTHDATE_SEPARATOR = '-';
+const BIRTHDATE_FORMAT = 'M/D/Y';
+const BIRTHDATE_SEPARATOR = '/';
 
 // Full name mapping
 const FULL_TEAM_NAMES = {
@@ -244,6 +251,8 @@ const TEAM_INFO = {
 };
 
 module.exports = {
+  BIRTHDATE_FORMAT,
+  BIRTHDATE_SEPARATOR,
   CURRENT_LEAGUE,
   ROSTER_URL,
   PLAYER_INFO_URL,
